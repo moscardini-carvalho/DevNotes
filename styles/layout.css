@@ -1,0 +1,53 @@
+/* Layout do Header e do restante da página */
+
+.app-header {
+    padding: 16px 24px;
+    background-color: #0871B3;
+}
+
+.app-container {
+    display: flex;
+    height: calc(100vh - 64px);
+}
+
+
+/* Layout da Sidebar */
+
+.sidebar {
+    width: 240px;
+    background-color: #003C62;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px
+}
+
+.sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Layout das Notes */
+
+.notes-section {
+    width: 320px;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+/* Layout do Editor */
+
+.editor-section h2 {
+    margin-bottom: 10px;
+}
+
+.editor-section {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevNotes</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Cabeçalho da aplicação -->
+    <header class="app-header">
+        <h1 class="app-title">DevNotes</h1>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <nav class="categories">
+                <h2>Categories</h2>
+
+                <!-- LISTA DINÂMICA DE CATEGORIAS -->
+                <ul class="categories-list" id="categoriesList">
+                    <!-- Categorias inseridas via JavaScript -->
+                </ul>
+            </nav>
+
+            <!-- AÇÕES GLOBAIS -->
+            <div class="sidebar-actions">
+
+                <!-- BOTÃO CRIAR NOVA NOTA -->
+                <button class="btn-primary" type="button" id="newNoteBtn">
+                    New Note
+                </button>
+
+                <!-- BOTÃO CRIAR NOVA CATEGORIA -->
+                <button class="btn-secondary" type="button" id="addCategoryBtn">
+                    New Category
+                </button>
+
+                <button class="btn-secondary" type="button">
+                    Configurations
+                </button>
+
+            </div>
+        </aside>
+
+        <!-- Lista de notas -->
+        <section class="notes-section">
+            <h2>Notes</h2>
+
+            <ul class="notes-list" id="notesList">
+                <!-- Notas inseridas via JavaScript -->
+                <li class="empty-state">
+                    No notes available
+                </li>
+            </ul>
+        </section>
+
+        <!-- Editor de notas -->
+        <section class="editor-section">
+            <h2>Note Editor</h2>
+
+            <form class="note-form" id="noteForm">
+
+                <label>
+                    Title
+                    <input type="text" name="title" />
+                </label>
+
+                <label>
+                    Category
+                    <select name="category" id="categorySelect">
+                        <!-- Options inseridas via JavaScript -->
+                    </select>
+                </label>
+
+                <label>
+                    Tags
+                    <input type="text" name="tags" placeholder="Press Enter to add tag" />
+                </label>
+
+                <label>
+                    Content
+                    <textarea name="content" rows="6"></textarea>
+                </label>
+
+                <div class="form-actions">
+                    <button class="btn-primary" type="submit">
+                        Save Note
+                    </button>
+
+                    <button class="btn-danger" type="button" id="deleteNoteBtn">
+                        Delete
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+    </main>
+
+    <script type="module" src="scripts/app.js"></script>
+
+</body>
+
+</html>
