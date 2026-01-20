@@ -1,6 +1,7 @@
 import { state } from "../scripts/state/state.js";
 import { renderCategories } from "../scripts/ui/sidebar.js";
 import { renderNotesList } from "../scripts/ui/noteList.js";
+import { initEditor } from "./ui/editor.js";
 
 state.categories = [
     { id: "html", name: "HTML" },
@@ -23,3 +24,4 @@ state.notes = [
 
 renderCategories();
 renderNotesList();
+initEditor();
