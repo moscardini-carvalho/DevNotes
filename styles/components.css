@@ -185,3 +185,13 @@ button:disabled {
 .note-item.active {
     border-left: 3px solid #0871B3;
 }
+
+.note-content {
+    margin: 24px 0;
+    line-height: 1.6;
+}
+
+.note-actions {
+    display: flex;
+    gap: 12px;
+}

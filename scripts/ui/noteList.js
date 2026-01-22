@@ -1,4 +1,5 @@
 import { state } from "../state/state.js";
+import { renderNoteView } from "./noteView.js";
 
 const notesList = document.getElementById("notesList");
 
@@ -20,10 +21,21 @@ export function renderNotesList() {
         li.classList.add("note-item");
         li.dataset.id = note.id;
 
-        const title = document.createElement("strong");
-        title.textContent = note.title;
+        //Estado manda no visual
+        if ( state.ui.selectedNoteId === note.id) {
+            li.classList.add("active");
+        }
 
-        li.appendChild(title);
+        li.textContent = note.title;
+
+        //Clique muda o estado
+        li.addEventListener("click", () => {
+            //Com isso, o sistema sabe qual nota está ativa
+            state.ui.selectedNoteId = note.id;
+            state.ui.view = "view";
+            renderNotesList();
+            renderNoteView();
+        });
         notesList.appendChild(li);
     });
 }
