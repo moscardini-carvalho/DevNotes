@@ -1,5 +1,7 @@
 import { state } from "../state/state.js";
 import { initEditor } from "./editor.js";
+import { deleteNote } from "../services/notes.js";
+import { renderNotesList } from "./noteList.js";
 
 const noteView = document.getElementById("noteView");
 const noteForm = document.getElementById("noteForm");
@@ -50,4 +52,16 @@ function bindNoteViewActions() {
     noteForm.hidden = false;
     initEditor();
   };
+
+  document.getElementById("deleteBtn").onclick = () => {
+    deleteNote(state.ui.selectedNoteId);
+
+    state.ui.selectedNoteId = null;
+    state.ui.view = "list";
+
+    document.getElementById("noteView").hidden = true;
+    document.getElementById("noteForm").hidden = false;
+
+    renderNotesList();
+  }
 }

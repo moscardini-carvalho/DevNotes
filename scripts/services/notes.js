@@ -28,3 +28,10 @@ export function createNote(noteData) {
     return newNote;
 }
 
+
+export function deleteNote(noteId) {
+    const index = state.notes.findIndex(n => n.id ===noteId);
+    if (index === -1 ) return;
+
+    state.notes.splice(index, 1);
+}
