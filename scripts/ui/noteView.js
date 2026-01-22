@@ -1,16 +1,20 @@
 import { state } from "../state/state.js";
+import { initEditor } from "./editor.js";
 
-const editorSection = document.querySelector(".editor-section");
+const noteView = document.getElementById("noteView");
+const noteForm = document.getElementById("noteForm");
 
 export function renderNoteView() {
-    const noteId = state.ui.selectedNoteId;
-    if (!noteId) return;
+  const noteId = state.ui.selectedNoteId;
+  if (!noteId) return;
 
-    const note = state.notes.find(n => n.id === noteId);
+  const note = state.notes.find(n => n.id === noteId);
+  if (!note) return;
 
-    if(!note) return;
+  noteForm.hidden = true;
+  noteView.hidden = false;
 
-    editorSection.innerHTML = `
+  noteView.innerHTML = `
     <h2>${note.title}</h2>
 
     <div class="note-meta">
@@ -32,16 +36,18 @@ export function renderNoteView() {
 }
 
 function bindNoteViewActions() {
-    document.getElementById("backBtn").addEventListener("click", () => {
-        state.ui.view = "list";
-        state.ui.selectedNoteId = null;
-        window.location.reload();
-    });
+  document.getElementById("backBtn").onclick = () => {
+    state.ui.view = "list";
+    state.ui.selectedNoteId = null;
+    noteView.hidden = true;
+    noteForm.hidden = false;
+    noteView.innerHTML = "";
+  };
 
-    document.getElementById("editBtn").addEventListener("click", () => {
-        state.ui.view = "edit";
-        window.location.reload();
-    });
-
-    // Reload é temporário
+  document.getElementById("editBtn").onclick = () => {
+    state.ui.view = "edit";
+    noteView.hidden = true;
+    noteForm.hidden = false;
+    initEditor();
+  };
 }
