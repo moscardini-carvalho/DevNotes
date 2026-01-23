@@ -3,6 +3,7 @@ import { loadNotes } from "./storage/storage.js";
 import { renderNotesList } from "./ui/noteList.js";
 import { initEditor } from "./ui/editor.js";
 import { renderCategories } from "./ui/sidebar.js";
+import { initCategoryCreator } from "./ui/categoryCreator.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -18,4 +19,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3️⃣ Inicializar editor (listeners)
   initEditor();
+  initCategoryCreator();
 });
