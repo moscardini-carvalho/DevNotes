@@ -1,15 +1,21 @@
 import { state } from "./state/state.js";
-import { renderCategories } from "./ui/sidebar.js";
+import { loadNotes } from "./storage/storage.js";
 import { renderNotesList } from "./ui/noteList.js";
 import { initEditor } from "./ui/editor.js";
-import { renderNoteView } from "./ui/noteView.js";
+import { renderCategories } from "./ui/sidebar.js";
 
-renderCategories();
-renderNotesList();
+document.addEventListener("DOMContentLoaded", () => {
 
-// SEMPRE inicializa o editor
-initEditor();
+  // 1️⃣ Hidratar o state
+  const storedNotes = loadNotes();
+  if (storedNotes.length > 0) {
+    state.notes = storedNotes;
+  }
 
-if (state.ui.view === "view") {
-  renderNoteView();
-}
+  // 2️⃣ Renderizações iniciais
+  renderCategories?.(); // se existir
+  renderNotesList();
+
+  // 3️⃣ Inicializar editor (listeners)
+  initEditor();
+});
