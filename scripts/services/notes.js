@@ -1,4 +1,5 @@
 import { state } from "../state/state.js";
+import { saveNotes } from "../storage/storage.js";
 
 export function updateNote(noteId, updatedData) {
     const note = state.notes.find(n => n.id === noteId);
@@ -9,6 +10,8 @@ export function updateNote(noteId, updatedData) {
     note.tags = updatedData.tags;
     note.content = updatedData.content;
     note.updatedAt = Date.now();
+
+    saveNotes(state.notes);
 }
 
 export function createNote(noteData) {
@@ -24,6 +27,7 @@ export function createNote(noteData) {
     };
 
     state.notes.push(newNote);
+    saveNotes(state.notes);
 
     return newNote;
 }
@@ -34,4 +38,5 @@ export function deleteNote(noteId) {
     if (index === -1 ) return;
 
     state.notes.splice(index, 1);
+    saveNotes(state.notes);
 }
